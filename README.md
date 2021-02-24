@@ -45,7 +45,7 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| users_id   | integer | null: false, foreign_key: true |
+| user_id   | integer | null: false, foreign_key: true |
 | price   | string | null: false |
 | post_code   | string | null: false |
 | prefecture   | string | null: false |
