@@ -77,6 +77,4 @@
 
 ### Association
 
-- has_many :users
-- belongs_to :item
-- belongs_to :destination
+- has_one :destination
