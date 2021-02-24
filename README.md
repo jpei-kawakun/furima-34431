@@ -22,7 +22,7 @@
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | name | string | null: false |
-| description | string | null: false |
+| description | text | null: false |
 | category | integer | null: false |
 | status | string | null: false |
 | shipping_cost | string | null: false |
