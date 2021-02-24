@@ -27,8 +27,7 @@
 | price | string | null: false |
 | user_id | integer | null: false, foreign_key: true |
 | prefecture_id   | integer | null: false |
-| city   | string | null: false | 
-| price | string | null: false |
+| price | integer | null: false |
 
 ### Association
 
@@ -40,7 +39,6 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| price   | string | null: false |
 | post_code   | string | null: false |
 | prefecture   | string | null: false |
 | city   | string | null: false |
