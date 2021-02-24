@@ -14,6 +14,9 @@
 | birth_day | date | null: false |
 ### Association
 
+- has_many :users
+- belongs_to :purchase
+
 ## items テーブル
 
 | Column | Type   | Options     |
@@ -24,14 +27,13 @@
 | status_id | integer | null: false |
 | shipping_cost_id | integer | null: false |
 | shipping_day_id | integer | null: false |
-| price | string | null: false |
 | user_id | integer | null: false, foreign_key: true |
 | prefecture_id   | integer | null: false |
 | price | integer | null: false |
 
 ### Association
 
-- has_many :users
+- belongs_to :users
 - belongs_to :destination
 - has_one :purchase
 
