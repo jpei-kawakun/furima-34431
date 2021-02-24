@@ -27,7 +27,7 @@
 | status_id | integer | null: false |
 | shipping_cost_id | integer | null: false |
 | shipping_day_id | integer | null: false |
-| user_id | references | null: false, foreign_key: true |
+| user | references | null: false, foreign_key: true |
 | prefecture_id   | integer | null: false |
 | price | integer | null: false |
 
@@ -36,7 +36,7 @@
 - has_many :user
 - has_one :purchase
 
-## purchase テーブル
+## purchases テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -45,10 +45,10 @@
 
 ### Association
 - has_one :destination
-- has_many :users
+- belongs_to :user
 - belongs_to :item
 
-## destination テーブル
+## destinations テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
