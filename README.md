@@ -14,8 +14,8 @@
 | birth_day | date | null: false |
 ### Association
 
-- has_many :users
-- belongs_to :purchase
+- has_many :items
+- has_many :purchase
 
 ## items テーブル
 
@@ -34,27 +34,7 @@
 ### Association
 
 - belongs_to :users
-- belongs_to :destination
 - has_one :purchase
-
-## destination テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| post_code   | string | null: false |
-| prefecture   | string | null: false |
-| city   | string | null: false |
-| address   | string | null: false |
-| building_name   | string |  
-| phone_number   | string | null: false |
-| purchase_id   | integer | null: false, foreign_key: true |
-
-
-
-
-### Association
-
-- belongs_to :purchase
 
 ## purchase テーブル
 
@@ -63,9 +43,23 @@
 | item_id   | integer | null: false, foreign_key: true |
 | user_id   | integer | null: false, foreign_key: true |
 
+### Association
+- has_one :destination
 
+## destination テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| post_code   | string | null: false |
+| prefecture_id   | integer | null: false |
+| city   | string | null: false |
+| address   | string | null: false |
+| building_name   | string |  
+| phone_number   | string | null: false |
+| purchase_id   | integer | null: false, foreign_key: true |
 
 
 ### Association
 
-- has_one :destination
+- belongs_to :purchase
+
