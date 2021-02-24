@@ -24,12 +24,16 @@
 | ------ | ------ | ----------- |
 | name | string | null: false |
 | description | text | null: false |
-| category | integer | null: false |
+| category_id | integer | null: false |
 | status | string | null: false |
 | shipping_cost | string | null: false |
 | shipping_days | string | null: false |
 | price | string | null: false |
 | user_id | integer | null: false, foreign_key: true |
+| prefecture   | string | null: false |
+| city   | string | null: false |
+| address   | string | null: false |
+| building_name   | string |  
 
 ### Association
 
