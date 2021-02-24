@@ -22,11 +22,11 @@
 | description | text | null: false |
 | category_id | integer | null: false |
 | status_id | integer | null: false |
-| shipping_cost | string | null: false |
-| shipping_days | string | null: false |
+| shipping_cost_id | integer | null: false |
+| shipping_day_id | integer | null: false |
 | price | string | null: false |
 | user_id | integer | null: false, foreign_key: true |
-| prefecture   | string | null: false |
+| prefecture_id   | integer | null: false |
 | city   | string | null: false | 
 | price | string | null: false |
 
@@ -40,7 +40,6 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| items_id   | integer | null: false, foreign_key: true |
 | price   | string | null: false |
 | post_code   | string | null: false |
 | prefecture   | string | null: false |
@@ -55,8 +54,7 @@
 
 ### Association
 
-- has_many :users
-- belongs_to :item
+- belongs_to :purchase
 
 ## purchase テーブル
 
