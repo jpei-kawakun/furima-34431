@@ -69,7 +69,9 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| items_id   | integer | null: false, foreign_key: true |
+| item_id   | integer | null: false, foreign_key: true |
+| user_id   | integer | null: false, foreign_key: true |
+
 
 
 
