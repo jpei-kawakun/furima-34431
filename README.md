@@ -15,7 +15,8 @@
 ### Association
 
 - has_many :items
-- has_many :buyers
+- has_many :purchase
+- has_one :destination
 
 ## items テーブル
 
@@ -33,9 +34,10 @@
 ### Association
 
 - has_many :users
-- has_one :buyers
+- belongs_to :destination
+- has_one :purchase
 
-## buyers テーブル
+## destination テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -47,9 +49,28 @@
 | address   | string | null: false |
 | building_name   | string | null: false |
 | phone_number   | string | null: false |
+| family_name | string | null: false |
+| first_name | string | null: false |
+| family_name_kana | string | null: false |
+| first_name_kana | string | null: false |
 
 
 ### Association
 
 - has_many :users
 - belongs_to :item
+- has_one :purchase
+
+## purchase テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| items_id   | integer | null: false, foreign_key: true |
+
+
+
+### Association
+
+- has_many :users
+- belongs_to :item
+- belongs_to :destination
