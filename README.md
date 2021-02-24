@@ -27,21 +27,21 @@
 | status_id | integer | null: false |
 | shipping_cost_id | integer | null: false |
 | shipping_day_id | integer | null: false |
-| user_id | integer | null: false, foreign_key: true |
+| user_id | references | null: false, foreign_key: true |
 | prefecture_id   | integer | null: false |
 | price | integer | null: false |
 
 ### Association
 
-- belongs_to :user
+- has_many :user
 - has_one :purchase
 
 ## purchase テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| item_id   | integer | null: false, foreign_key: true |
-| user_id   | integer | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
 
 ### Association
 - has_one :destination
@@ -58,7 +58,7 @@
 | address   | string | null: false |
 | building_name   | string |  
 | phone_number   | string | null: false |
-| purchase_id   | integer | null: false, foreign_key: true |
+| purchase   | references | null: false, foreign_key: true |
 
 
 ### Association
