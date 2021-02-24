@@ -14,10 +14,6 @@
 | birth_day | date | null: false |
 ### Association
 
-- has_many :items
-- has_many :purchase
-- has_one :destination
-
 ## items テーブル
 
 | Column | Type   | Options     |
@@ -32,6 +28,7 @@
 | user_id | integer | null: false, foreign_key: true |
 | prefecture   | string | null: false |
 | city   | string | null: false | 
+| price | string | null: false |
 
 ### Association
 
@@ -43,6 +40,8 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
+| items_id   | integer | null: false, foreign_key: true |
+| price   | string | null: false |
 | post_code   | string | null: false |
 | prefecture   | string | null: false |
 | city   | string | null: false |
