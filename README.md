@@ -39,7 +39,7 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| items_id   | integer | null: false, foreign_key: true |
+| users_id   | integer | null: false, foreign_key: true |
 | price   | string | null: false |
 | post_code   | string | null: false |
 | prefecture   | string | null: false |
