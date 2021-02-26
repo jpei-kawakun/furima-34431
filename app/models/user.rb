@@ -10,6 +10,6 @@ class User < ApplicationRecord
          validates :first_name_kana, presence: true
          validates :birth_day, presence: true
          PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-         validates :password,length:{minimum:6},with: PASSWORD_REGEX
+        validates_format_of :password, with: PASSWORD_REGEX
   has_many :purchases
 end
