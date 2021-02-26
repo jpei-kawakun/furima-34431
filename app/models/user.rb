@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   with_options presence: true do
    validates :nick_name
-   NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
+   NAME_REGEX = /\A[ぁ-んァ-ン一-龥々]+\z/.freeze
    validates_format_of :family_name, with: NAME_REGEX
    validates_format_of :first_name, with: NAME_REGEX
    KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
