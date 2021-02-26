@@ -5,14 +5,17 @@ class Item < ApplicationRecord
          :recoverable, :rememberable, :validatable
   with_options presence: true do
     validates :name
-    validates :nick_name
-    validates :nick_name
-    validates :nick_name
-    validates :nick_name
-    validates :nick_name
-    validates :nick_name
-    validates :nick_name
+    validates :description
+    validates :status_id
+    validates :category_id
+    validates :shipping_cost_id
+    validates :shipping_day_id
+    validates :prefecture_id
+    validates :price
   end
+
+    PRICE_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+    validates_format_of :price, with: PRICE_REGEX, greater_than: 300, less_than: 99999999
 
     belongs_to :user
     has_one :purchase
