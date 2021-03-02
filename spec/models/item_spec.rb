@@ -4,7 +4,6 @@ RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
   end
-  pending "add some examples to (or delete) #{__FILE__}"
 
   describe '商品出品機能' do
     it 'nameが空だと登録できない' do

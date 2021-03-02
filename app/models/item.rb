@@ -28,10 +28,11 @@ class Item < ApplicationRecord
     validates :shipping_day_id, numericality: { other_than: 1 }
     validates :prefecture_id, numericality: { other_than: 1 }
 
+
     belongs_to :category
     belongs_to :prefecture
     belongs_to :shipping_cost
     belongs_to :shipping_day
     belongs_to :status
-    
+
 end
