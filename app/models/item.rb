@@ -6,8 +6,9 @@ class Item < ApplicationRecord
     validates :price
   end
 
-    PRICE_REGEX = /\A[0-9]+\z/.freeze
-    validates_format_of :price, with: PRICE_REGEX, greater_than: 300, less_than: 99999999
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 99999999, message: "is invalid"}
+
+
 
     belongs_to :user
     has_one :purchase
