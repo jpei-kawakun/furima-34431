@@ -6,6 +6,7 @@ RSpec.describe Item, type: :model do
   end
 
   context '商品出品ができる時' do
+    expect(@item).to be_valid
   end
 
   context '商品出品ができない時' do
@@ -32,12 +33,6 @@ RSpec.describe Item, type: :model do
       @item.price = 123
       @item.valid?
       expect(@item.errors.full_messages).to include("User must exist")
-    end
-
-    it 'priceは300-99999999の間でないと登録できない' do
-      @item.price = 300-99999999
-      @item.valid?
-      expect(@item.errors.full_messages).to include("Price is invalid")
     end
 
     it 'status_idが空だと登録できない' do
@@ -70,34 +65,35 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include( "Prefecture can't be blank")
     end
 
-    it 'status_idが1だと登録できない' do
-      @item.status_id = 1
+    it 'status_idが0だと登録できない' do
+      @item.status_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include( "Status must be other than 1")
+      expect(@item.errors.full_messages).to include( "Status must be other than 0")
     end
 
-    it 'category_idが1だと登録できない' do
-      @item.category_id = 1
+    it 'category_idが0だと登録できない' do
+      @item.category_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include( "Category must be other than 1")
+      expect(@item.errors.full_messages).to include( "Category must be other than 0")
     end
 
-    it 'shipping_cost_idが1だと登録できない' do
-      @item.shipping_cost_id = 1
+    it 'shipping_cost_idが0だと登録できない' do
+      @item.shipping_cost_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include( "Shipping cost must be other than 1")
+      expect(@item.errors.full_messages).to include( "Shipping cost must be other than 0")
     end
 
-    it 'shipping_day_idが1だと登録できない' do
-      @item.shipping_day_id = 1
+    it 'shipping_day_idが0だと登録できない' do
+      @item.shipping_day_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include( "Shipping day must be other than 1")
+      expect(@item.errors.full_messages).to include( "Shipping day must be other than 0")
     end
 
-    it 'prefecture_idが1だと登録できない' do
-      @item.prefecture_id = 1
+    it 'prefecture_idが0だと登録できない' do
+      @item.prefecture_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include( "User must exist")
+      expect(@item.errors.full_messages).to include( "Prefecture must be other than 0")
+      
     end
 
     it 'priceは299円以下だと登録できない' do
