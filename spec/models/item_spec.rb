@@ -5,7 +5,11 @@ RSpec.describe Item, type: :model do
     @item = FactoryBot.build(:item)
   end
 
-  describe '商品出品機能' do
+  context '商品出品ができる時' do
+  end
+
+  context '商品出品ができない時' do
+
     it 'nameが空だと登録できない' do
       @item.name = ''
       @item.valid?
@@ -65,5 +69,67 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include( "Prefecture can't be blank")
     end
+
+    it 'status_idが1だと登録できない' do
+      @item.status_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include( "Status must be other than 1")
+    end
+
+    it 'category_idが1だと登録できない' do
+      @item.category_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include( "Category must be other than 1")
+    end
+
+    it 'shipping_cost_idが1だと登録できない' do
+      @item.shipping_cost_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include( "Shipping cost must be other than 1")
+    end
+
+    it 'shipping_day_idが1だと登録できない' do
+      @item.shipping_day_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include( "Shipping day must be other than 1")
+    end
+
+    it 'prefecture_idが1だと登録できない' do
+      @item.prefecture_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include( "User must exist")
+    end
+
+    it 'priceは299円以下だと登録できない' do
+      @item.price = 299
+      @item.valid?
+      expect(@item.errors.full_messages).to include( "User must exist")
+    end
+
+    it 'priceは10,000,000円以上だと登録できない' do
+      @item.price = 10,000,000
+      @item.valid?
+      expect(@item.errors.full_messages).to include( "Price is invalid")
+    end
+
+    it 'priceは全角英字だと登録できない' do
+      @item.price = 'A'
+      @item.valid?
+      expect(@item.errors.full_messages).to include( "User must exist")
+    end
+
+    it 'priceは英数混同だとだと登録できない' do
+      @item.price = '1a'
+      @item.valid?
+      expect(@item.errors.full_messages).to include( "User must exist")
+    end
+
+    it 'priceは半角英数のみだと登録できない' do
+      @item.price = 'a'
+      @item.valid?
+      expect(@item.errors.full_messages).to include( "User must exist")
+    end
+
+    
   end
 end

@@ -21,12 +21,13 @@ class Item < ApplicationRecord
      validates :shipping_day_id
      validates :prefecture_id
     end
-
-    validates :status_id, numericality: { other_than: 1 }
-    validates :category_id, numericality: { other_than: 1 }
-    validates :shipping_cost_id, numericality: { other_than: 1 }
-    validates :shipping_day_id, numericality: { other_than: 1 }
-    validates :prefecture_id, numericality: { other_than: 1 }
+    
+    with_options numericality: { other_than: 1 } do
+     validates :status_id
+     validates :category_id
+     validates :shipping_cost_id
+     validates :shipping_day_id
+    end
 
 
     belongs_to :category
