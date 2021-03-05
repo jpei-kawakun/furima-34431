@@ -1,7 +1,13 @@
 class PurchasesController < ApplicationController
+
   def index
     @purchase_destination = PurchaseDestination.new
     @items = Item.find(params[:item_id])
+    if user_signed_in? && current_user.id == @items.user_id
+      redirect_to root_path
+    else
+      render :index
+    end
   end
 
   def create
@@ -31,4 +37,5 @@ private
     currency: 'jpy'
    )
   end
+
 end
