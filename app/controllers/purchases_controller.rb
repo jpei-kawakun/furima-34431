@@ -1,18 +1,18 @@
 class PurchasesController < ApplicationController
+  before_action :set_item, only: [:index, :create]
+  before_action :sold_out_item, only: [:index]
 
   def index
     @purchase_destination = PurchaseDestination.new
-    @items = Item.find(params[:item_id])
     if user_signed_in? && current_user.id == @items.user_id
       redirect_to root_path
     else
-      render :index
+      redirect_to new_user_session_path
     end
   end
 
   def create
     @purchase_destination = PurchaseDestination.new(purchase_params)
-    @items = Item.find(params[:item_id])
     if @purchase_destination.valid?
       pay_item
       @purchase_destination.save
@@ -20,6 +20,11 @@ class PurchasesController < ApplicationController
     else
       render :index
     end
+
+    if current_user.id == @items.user_id
+      redirect_to root_path
+    end
+
   end
 
 private
@@ -37,5 +42,13 @@ private
     currency: 'jpy'
    )
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+   end
+
+   def sold_out_item
+    redirect_to root_path if @item.purchase.present?
+   end
 
 end
