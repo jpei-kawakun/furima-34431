@@ -4,7 +4,7 @@ class PurchasesController < ApplicationController
 
   def index
     @purchase_destination = PurchaseDestination.new
-    if user_signed_in? && current_user.id == @items.user_id
+    if user_signed_in? && current_user.id == @purchase_destination.user_id
       redirect_to root_path
     else
       redirect_to new_user_session_path
@@ -44,7 +44,7 @@ private
   end
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
    end
 
    def sold_out_item
