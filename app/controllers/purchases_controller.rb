@@ -2,12 +2,10 @@ class PurchasesController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :sold_out_item, only: [:index, :create]
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
 
   def index
     @purchase_destination = PurchaseDestination.new
-    if current_user.id == @item.user_id
-      redirect_to root_path
-    end
   end
 
   def create
@@ -19,11 +17,6 @@ class PurchasesController < ApplicationController
     else
       render :index
     end
-
-    if current_user.id == @items.user_id
-      redirect_to root_path
-    end
-
   end
 
 private
@@ -36,7 +29,7 @@ private
   def pay_item
    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
    Payjp::Charge.create(
-    amount: @items.price,
+    amount: @item.price,
     card: purchase_params[:token],
     currency: 'jpy'
    )
@@ -48,6 +41,12 @@ private
 
    def sold_out_item
     redirect_to root_path if @item.purchase.present?
+   end
+
+   def move_to_index
+    if current_user.id == @items.user_id
+      redirect_to root_path
+    end
    end
 
 end

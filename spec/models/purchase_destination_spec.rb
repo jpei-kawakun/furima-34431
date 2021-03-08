@@ -58,6 +58,10 @@ RSpec.describe PurchaseDestination, type: :model do
       @purchase_destination.phone_number = '111111111111'
       @purchase_destination.valid?
       expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid")
+     it 'phone_numberは全角数字だと保存できないこと' do
+        @purchase_destination.phone_number = '１'
+        @purchase_destination.valid?
+        expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid")
      end
      it "tokenが空では登録できないこと" do
       @purchase_destination.token = nil

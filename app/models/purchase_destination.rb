@@ -9,7 +9,7 @@ class PurchaseDestination
     validates :prefecture_id
     validates :city
     validates :address
-    validates :phone_number, format: {with: /\A\d{11}\z/}
+    validates :phone_number, format: {with: /\A\d{10,11}\z/}
     validates :token
 
   end
