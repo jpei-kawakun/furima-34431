@@ -40,7 +40,9 @@ private
    end
 
    def sold_out_item
-    redirect_to root_path if @item.purchase.present?
+    if @item.purchase.present?
+      redirect_to root_path
+    end
    end
 
    def move_to_index
