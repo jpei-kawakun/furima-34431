@@ -1,13 +1,12 @@
 class PurchasesController < ApplicationController
   before_action :set_item, only: [:index, :create]
-  before_action :sold_out_item, only: [:index]
+  before_action :sold_out_item, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index, :create]
 
   def index
     @purchase_destination = PurchaseDestination.new
-    if user_signed_in? && current_user.id == @purchase_destination.user_id
+    if user_signed_in? && current_user.id == @item.purchase.user_id
       redirect_to root_path
-    else
-      redirect_to new_user_session_path
     end
   end
 
