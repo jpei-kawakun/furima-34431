@@ -54,15 +54,22 @@ RSpec.describe PurchaseDestination, type: :model do
       @purchase_destination.phone_number = 'aA'
       @purchase_destination.valid?
       expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid")
+     end
      it 'phone_numberは11桁以内の数値のみ保存可能なこと' do
       @purchase_destination.phone_number = '111111111111'
       @purchase_destination.valid?
       expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid")
+     end
      it 'phone_numberは全角数字だと保存できないこと' do
         @purchase_destination.phone_number = '１'
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid")
      end
+     it 'phone_numberは-が含まれていると保存できない' do
+      @purchase_destination.phone_number = '012-1234-1234'
+      @purchase_destination.valid?
+      expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid")
+   end
      it "tokenが空では登録できないこと" do
       @purchase_destination.token = nil
       @purchase_destination.valid?
