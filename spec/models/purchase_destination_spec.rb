@@ -51,7 +51,7 @@ RSpec.describe PurchaseDestination, type: :model do
       expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid")
      end
      it 'phone_numberは数字以外保存できないこと' do
-      @purchase_destination.phone_number = 'aA'
+      @purchase_destination.phone_number = 'aAaaaaaaaaa'
       @purchase_destination.valid?
       expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid")
      end
@@ -61,7 +61,7 @@ RSpec.describe PurchaseDestination, type: :model do
       expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid")
      end
      it 'phone_numberは全角数字だと保存できないこと' do
-        @purchase_destination.phone_number = '１'
+        @purchase_destination.phone_number = '１２３４５６７８９０'
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid")
      end
